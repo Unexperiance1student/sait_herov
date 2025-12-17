@@ -55,7 +55,7 @@ export function SiteHeader() {
           <SheetTrigger className="md:hidden" aria-label="Открыть меню">
             <Menu className="h-6 w-6" />
           </SheetTrigger>
-          <SheetContent className="bg-background" side="right">
+          <SheetContent className="bg-white px-1.5" side="right">
             <SheetHeader>
               <SheetTitle>Меню</SheetTitle>
             </SheetHeader>
