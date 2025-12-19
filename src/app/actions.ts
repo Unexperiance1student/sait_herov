@@ -6,8 +6,11 @@ import { z } from 'zod';
 // Получите токен бота у @BotFather в Telegram
 // Получите chat_id: отправьте боту сообщение и перейдите по ссылке:
 // https://api.telegram.org/bot<TOKEN>/getUpdates
+// Можно указать несколько chat_id через запятую: "123456789,987654321"
 const TELEGRAM_BOT_TOKEN = process.env.TELEGRAM_BOT_TOKEN;
-const TELEGRAM_CHAT_ID = process.env.TELEGRAM_CHAT_ID;
+const TELEGRAM_CHAT_IDS = process.env.TELEGRAM_CHAT_ID
+  ? process.env.TELEGRAM_CHAT_ID.split(',').map(id => id.trim()).filter(Boolean)
+  : [];
 
 // Схема валидации заявки
 const leadSchema = z.object({
@@ -37,7 +40,7 @@ export type SubmitLeadResult =
  * Отправка сообщения в Telegram
  */
 async function sendToTelegram(data: LeadFormData): Promise<boolean> {
-  if (!TELEGRAM_BOT_TOKEN || !TELEGRAM_CHAT_ID) {
+  if (!TELEGRAM_BOT_TOKEN || TELEGRAM_CHAT_IDS.length === 0) {
     console.warn('[Telegram] Токен или chat_id не настроены');
     return false;
   }
@@ -52,31 +55,38 @@ ${data.comment ? `💬 *Комментарий:* ${escapeMarkdown(data.comment)}
 📅 ${new Date().toLocaleString('ru-RU', { timeZone: 'Europe/Moscow' })}
   `.trim();
 
-  try {
-    const response = await fetch(
-      `https://api.telegram.org/bot${TELEGRAM_BOT_TOKEN}/sendMessage`,
-      {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          chat_id: TELEGRAM_CHAT_ID,
-          text: message,
-          parse_mode: 'Markdown',
-        }),
-      }
-    );
+  // Отправляем сообщение всем указанным chat_id
+  const sendPromises = TELEGRAM_CHAT_IDS.map(async (chatId) => {
+    try {
+      const response = await fetch(
+        `https://api.telegram.org/bot${TELEGRAM_BOT_TOKEN}/sendMessage`,
+        {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            chat_id: chatId,
+            text: message,
+            parse_mode: 'Markdown',
+          }),
+        }
+      );
 
-    if (!response.ok) {
-      const error = await response.text();
-      console.error('[Telegram] Ошибка отправки:', error);
+      if (!response.ok) {
+        const error = await response.text();
+        console.error(`[Telegram] Ошибка отправки в chat_id ${chatId}:`, error);
+        return false;
+      }
+
+      return true;
+    } catch (error) {
+      console.error(`[Telegram] Ошибка отправки в chat_id ${chatId}:`, error);
       return false;
     }
+  });
 
-    return true;
-  } catch (error) {
-    console.error('[Telegram] Ошибка:', error);
-    return false;
-  }
+  const results = await Promise.all(sendPromises);
+  // Возвращаем true, если хотя бы одно сообщение отправлено успешно
+  return results.some(result => result === true);
 }
 
 /**
