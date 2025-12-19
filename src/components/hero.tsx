@@ -17,12 +17,12 @@ export function Hero() {
             id="hero-heading"
             className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight leading-tight"
           >
-            Алюминиевые окна, двери и фасады{' '}
-            <span className="text-primary/80">в Краснодаре и ЮФО</span>
+            Производство алюминиевых окон и дверей{' '}
+            <span className="text-primary/80">в Краснодаре и Краснодарском крае</span>
           </h1>
           
           <p className="mt-6 text-base md:text-lg text-muted-foreground">
-            От замера до монтажа. Профили: Красал, Алнэо, Алрокс, Алютех.
+            Собственное производство алюминиевых конструкций в Краснодарском крае. Окна, двери, раздвижные и фасадные системы. Профили: Красал, Алнэо, Алрокс, Алютех. Проекты под ключ от замера до монтажа.
           </p>
 
           {/* Преимущества */}

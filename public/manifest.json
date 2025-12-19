@@ -1,0 +1,18 @@
+{
+  "name": "ИП Дисяцкий - Производство алюминиевых окон и дверей в Краснодаре",
+  "short_name": "ИП Дисяцкий",
+  "description": "Собственное производство алюминиевых окон, дверей, раздвижных и фасадных систем в Краснодаре и Краснодарском крае",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#ffffff",
+  "orientation": "portrait-primary",
+  "icons": [
+    {
+      "src": "/favicon.ico",
+      "sizes": "any",
+      "type": "image/x-icon"
+    }
+  ]
+}
+

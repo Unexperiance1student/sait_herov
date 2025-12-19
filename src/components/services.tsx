@@ -48,7 +48,7 @@ export function Services() {
         id="services-heading" 
         className="text-2xl md:text-3xl font-semibold tracking-tight mb-8"
       >
-        Наши услуги
+        Производство и монтаж алюминиевых конструкций в Краснодаре
       </h2>
       
       <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">

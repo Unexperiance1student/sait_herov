@@ -1,0 +1,11 @@
+/* TEAM */
+ИП Дисяцкий
+Сайт: https://alumpro.vercel.app
+Описание: Производство алюминиевых окон и дверей в Краснодаре и Краснодарском крае
+
+/* SITE */
+Last update: 2025/01/19
+Standards: HTML5, CSS3, JavaScript
+Components: Next.js, React, TypeScript
+Software: Visual Studio Code
+

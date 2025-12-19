@@ -60,7 +60,7 @@ export function ProductionGallery() {
           >
             <Image
               src={src}
-              alt={`Производство - фото ${index + 1}`}
+              alt={`Производство алюминиевых окон и дверей в Краснодаре - производство в станице Новотитаровская, Краснодарский край`}
               fill
               className="object-cover"
               sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"

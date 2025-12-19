@@ -26,6 +26,7 @@ export function SiteHeader() {
         <Link 
           href="/" 
           className="font-semibold tracking-tight text-lg hover:opacity-80 transition-opacity"
+          title="Производство алюминиевых окон и дверей в Краснодаре"
         >
           ИП Дисяцкий
         </Link>

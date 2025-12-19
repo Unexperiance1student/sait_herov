@@ -18,7 +18,7 @@ export function SiteFooter() {
           <div>
             <div className="font-semibold text-lg text-foreground">ИП Дисяцкий</div>
             <p className="mt-2 text-sm text-muted-foreground">
-              Производство и монтаж алюминиевых конструкций в Краснодарском крае
+              Производство алюминиевых окон и дверей в Краснодаре и Краснодарском крае. Собственное производство, проекты под ключ.
             </p>
           </div>
 
