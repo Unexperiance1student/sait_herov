@@ -1,4 +1,5 @@
 import { Factory, Clock, Shield, Award } from 'lucide-react';
+import { ProductionGallery } from '@/components/production-gallery';
 
 const ABOUT_FEATURES = [
   { 
@@ -26,30 +27,8 @@ const ABOUT_FEATURES = [
 export function About() {
   return (
     <section id="about" className="grid gap-8 lg:grid-cols-2 items-center" aria-labelledby="about-heading">
-      {/* Визуальный блок */}
-      <div 
-        className="relative rounded-2xl bg-gradient-to-br from-muted to-muted/50 h-64 md:h-80 lg:h-full min-h-64 overflow-hidden"
-        aria-hidden="true"
-      >
-        {/* Декоративный паттерн */}
-        <div className="absolute inset-0 opacity-30">
-          <svg className="w-full h-full" viewBox="0 0 100 100" preserveAspectRatio="none">
-            <pattern id="grid" width="10" height="10" patternUnits="userSpaceOnUse">
-              <path d="M 10 0 L 0 0 0 10" fill="none" stroke="currentColor" strokeWidth="0.5" opacity="0.3" />
-            </pattern>
-            <rect width="100" height="100" fill="url(#grid)" />
-          </svg>
-        </div>
-        
-        {/* Центральный контент */}
-        <div className="absolute inset-0 flex items-center justify-center">
-          <div className="text-center p-6">
-            <Factory className="h-16 w-16 mx-auto text-primary/30" />
-            <div className="mt-4 text-lg font-medium text-primary/50">Производство</div>
-            <div className="text-sm text-muted-foreground">ст. Новотитаровская</div>
-          </div>
-        </div>
-      </div>
+      {/* Визуальный блок с галереей */}
+      <ProductionGallery />
 
       {/* Текстовый блок */}
       <div>
